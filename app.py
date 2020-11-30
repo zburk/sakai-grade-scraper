@@ -3,6 +3,7 @@ from SakaiPy import SakaiPy
 import time
 import smtplib
 import os
+import json
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -47,7 +48,7 @@ def main():
                 sent_from = gmail_user
                 to = [os.getenv("GMAIL_USERNAME")]
                 subject = 'Grade Posted'
-                body = gradebook['assignments']
+                body = json.dumps(gradebook['assignments'], indent=4, sort_keys=True)
 
                 email_text = """\
                 From: %s
