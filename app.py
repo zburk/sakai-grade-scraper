@@ -48,7 +48,7 @@ def main():
                 sent_from = gmail_user
                 to = [os.getenv("GMAIL_USERNAME")]
                 subject = 'Grade Posted'
-                body = json.dumps(gradebook['assignments'], indent=4, sort_keys=True)
+                body = "<pre>" + json.dumps(gradebook['assignments'], indent=4, sort_keys=True) + "</pre>"
 
                 email_text = """\
                 From: %s
